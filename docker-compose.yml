@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    build: ./
+    volumes:
+      - ./:/app
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && rails s -b 0.0.0.0"
