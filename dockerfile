@@ -12,3 +12,4 @@ RUN gem install bundler
 RUN bundle install
 RUN rails webpacker:install
 RUN rails db:migrate
+RUN rails db:seed
