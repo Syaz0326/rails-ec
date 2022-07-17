@@ -21,5 +21,6 @@ ProductCategory.create!(name: '化粧品')
   Product.create!(name: "商品#{i + 1}",
                   description: "商品#{i + 1}の説明文",
                   maker_id: Maker.find_by(id: i % 3 + 1).id,
-                  product_category_id: ProductCategory.find_by(id: i % 3 + 1).id)
+                  product_category_id: ProductCategory.find_by(id: i % 3 + 1).id,
+                  price: 1000 * (i + 1))
 end

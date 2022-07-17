@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
       id: item.id,
       name: item.name,
       description: item.description,
+      price: item.price,
       maker_name: item.maker.name,
       maker_description: item.maker.description,
       category: item.product_category.name,
