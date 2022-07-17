@@ -2,5 +2,19 @@
 <p>Find me in app/views/products/show.html.erb</p>
 
 <h1>
-  <%= @item.name %>
+  <%= @item[:name] %>
 </h1>
+<% @item.each do |key, value| %>
+  <%= key %>: 
+  <%= value %>
+  <br>
+<% end %>
+
+<h2>同じメーカーの商品</h2>
+<ul>
+  <% @other_products.each do |product| %>
+    <li>
+      <%= product.name %>
+    </li>
+  <% end %>
+</ul>

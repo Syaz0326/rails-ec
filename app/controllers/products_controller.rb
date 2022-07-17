@@ -4,6 +4,18 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @item = Product.find_by(id: params[:id])
+    item = Product.find_by(id: params[:id])
+    @item = {
+      id: item.id,
+      name: item.name,
+      description: item.description,
+      maker_name: item.maker.name,
+      maker_description: item.maker.description,
+      category: item.product_category.name,
+      review_count: 0,
+      score: 0
+    }
+
+    @other_products = Product.where(maker_id: item.maker_id)
   end
 end
