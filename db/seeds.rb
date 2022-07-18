@@ -24,3 +24,30 @@ ProductCategory.create!(name: '化粧品')
                   product_category_id: ProductCategory.find_by(id: i % 3 + 1).id,
                   price: 1000 * (i + 1))
 end
+
+# Review_tags seed
+ReviewTag.create!(name: 'デザイン')
+ReviewTag.create!(name: '使い勝手')
+ReviewTag.create!(name: '成分')
+ReviewTag.create!(name: '価格')
+ReviewTag.create!(name: '説明書')
+
+# Review seed
+30.times do |i|
+  review = Review.create!(product_id: rand(20) + 1,
+                          comment: "コメント#{i + 1}",
+                          reviewer_name: "レビュワー#{i + 1}",
+                          price_score: rand(5) + 1,
+                          design_score: rand(5) + 1,
+                          quality_score: rand(5) + 1)
+  tag_count = rand(5) + 1
+  tag_id = rand(5) + 1
+  tag_count.times do |i|
+    ReviewTagMap.create!(review_id: review.id,
+                         review_tag_id: tag_id)
+    tag_id += 1
+    if tag_id > 5
+      tag_id = 1
+    end
+  end
+end
