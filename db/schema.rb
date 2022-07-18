@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_17_133813) do
+ActiveRecord::Schema.define(version: 2022_07_18_031517) do
 
   create_table "makers", force: :cascade do |t|
     t.string "name", null: false
@@ -37,6 +37,25 @@ ActiveRecord::Schema.define(version: 2022_07_17_133813) do
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
 
+  create_table "review_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.string "comment"
+    t.string "reviewer_name"
+    t.integer "price_score"
+    t.integer "design_score"
+    t.integer "quality_score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_reviews_on_product_id"
+  end
+
   add_foreign_key "products", "makers"
   add_foreign_key "products", "product_categories"
+  add_foreign_key "reviews", "products"
 end
