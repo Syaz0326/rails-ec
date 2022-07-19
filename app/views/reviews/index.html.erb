@@ -34,13 +34,28 @@
   </div>
 
   <%= f.label :price_score, '価格評価' %>
-  <%= f.number_field :price_score %>
+  <div>
+    <% 5.times do |i| %>
+      <%= f.radio_button :price_score, i + 1 %>
+      <%= f.label :price_score, i + 1 %>
+    <% end %>
+  </div>
 
   <%= f.label :design_score, 'デザイン評価' %>
-  <%= f.number_field :design_score %>
+  <div>
+    <% 5.times do |i| %>
+      <%= f.radio_button :design_score, i + 1 %>
+      <%= f.label :design_score, i+1 %>
+    <% end %>
+  </div>
 
   <%= f.label :quality_score, '品質評価' %>
-  <%= f.number_field :quality_score %>
+  <div>
+    <% 5.times do |i| %>
+      <%= f.radio_button :quality_score, i + 1 %>
+      <%= f.label :quality_score, i+1 %>
+    <% end %>
+  </div>
 
   <%= f.submit 'Post Review' %>
 <% end %>
