@@ -1,6 +1,9 @@
 class ProductsController < ApplicationController
   def index
-    @items = Product.all
+    @items = Product.all.sort_by do |product|
+      product.review.size
+    end
+      .reverse
   end
 
   def show
