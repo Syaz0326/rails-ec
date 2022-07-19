@@ -26,11 +26,11 @@ ProductCategory.create!(name: '化粧品')
 end
 
 # Review_tags seed
-ReviewTag.create!(name: 'デザイン')
-ReviewTag.create!(name: '使い勝手')
-ReviewTag.create!(name: '成分')
-ReviewTag.create!(name: '価格')
-ReviewTag.create!(name: '説明書')
+ReviewTag.create!(name: 'design', label: 'デザイン')
+ReviewTag.create!(name: 'usability', label: '使い勝手')
+ReviewTag.create!(name: 'component', label: '成分')
+ReviewTag.create!(name: 'price', label: '価格')
+ReviewTag.create!(name: 'manual', label: '説明書')
 
 # Review seed
 30.times do |i|

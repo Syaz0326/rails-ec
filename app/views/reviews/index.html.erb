@@ -11,7 +11,7 @@
     <ul>
       <% review.review_tags.each do |tag| %>
         <li>
-          <%= tag.name %>
+          <%= tag.label %>
         </li>
       <% end %>
     </ul>
@@ -29,7 +29,7 @@
   <div>
     <% @review_tags.each do |tag| %>
       <%= f.check_box tag.name %>
-      <%= f.label tag.name %>
+      <%= f.label tag.name, tag.label %>
     <% end %>
   </div>
 
