@@ -1,0 +1,19 @@
+<h1>Reviews#index</h1>
+<p>Find me in app/views/reviews/index.html.erb</p>
+
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <%= review.comment %>,
+      <%= review.reviewer_name %>,
+      rate: <%= average_score_formatted(review) %>
+    </li>
+    <ul>
+      <% review.review_tags.each do |tag| %>
+        <li>
+          <%= tag.name %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>
