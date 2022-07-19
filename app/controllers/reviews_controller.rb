@@ -42,16 +42,17 @@ class ReviewsController < ApplicationController
     redirect_to reviews_path(@product)
   end
 
-  def review_params
-    review_tags = ReviewTag.select(:name).map do |tag|
-      tag.name
-    end
+  private
+    def review_params
+      review_tags = ReviewTag.select(:name).map do |tag|
+        tag.name
+      end
 
-    params.
-      require(:review)
-      .permit(:comment, :reviewer_name,
-              :price_score, :design_score, :quality_score,
-              *review_tags
-             )
-  end
+      params.
+        require(:review)
+        .permit(:comment, :reviewer_name,
+                :price_score, :design_score, :quality_score,
+                *review_tags
+               )
+    end
 end
