@@ -9,6 +9,8 @@
         <%= item.name %>,
         <%= item.description %>,
         <%= item.maker.name %>,
+        レビュー数: <%= item.review.length %>,
+        評価: <%= total_score_formatted(item.review) %>
       <% end %>
     </li>
   <% end %>
