@@ -17,3 +17,30 @@
     </ul>
   <% end %>
 </ul>
+
+<%= form_with(model: @new_review, local: true ) do |f| %>
+  <%= f.label :comment, 'コメント' %>
+  <%= f.text_area :comment %>
+
+  <%= f.label :reviewer_name, '名前' %>
+  <%= f.text_field :reviewer_name %>
+
+  <%= f.label 'タグ' %>
+  <div>
+    <% @review_tags.each do |tag| %>
+      <%= f.check_box tag.name %>
+      <%= f.label tag.name %>
+    <% end %>
+  </div>
+
+  <%= f.label :price_score, '価格評価' %>
+  <%= f.number_field :price_score %>
+
+  <%= f.label :design_score, 'デザイン評価' %>
+  <%= f.number_field :design_score %>
+
+  <%= f.label :quality_score, '品質評価' %>
+  <%= f.number_field :quality_score %>
+
+  <%= f.submit 'Post Review' %>
+<% end %>
