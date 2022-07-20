@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_19_140025) do
+ActiveRecord::Schema.define(version: 2022_07_20_115444) do
 
   create_table "makers", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2022_07_19_140025) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price", null: false
+    t.string "image_path"
     t.index ["maker_id"], name: "index_products_on_maker_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end

@@ -17,7 +17,8 @@ class ProductsController < ApplicationController
       maker_description: item.maker.description,
       category: item.product_category.name,
       review_count: 0,
-      score: 0
+      score: 0,
+      image_path: item.image_path
     }
 
     @other_products = Product.where(maker_id: item.maker_id)

@@ -22,7 +22,9 @@ ProductCategory.create!(name: '化粧品')
                   description: "商品#{i + 1}の説明文",
                   maker_id: Maker.find_by(id: i % 3 + 1).id,
                   product_category_id: ProductCategory.find_by(id: i % 3 + 1).id,
-                  price: 1000 * (i + 1))
+                  price: 1000 * (i + 1),
+                  image_path: "/product_images/product#{i + 1}.png"
+                 )
 end
 
 # Review_tags seed
