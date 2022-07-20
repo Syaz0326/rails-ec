@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/', to: 'products#index'
   get '/items', to: 'products#index', as: 'items'
   get '/items/:id', to: 'products#show', as: 'item'
   get '/items/:id/reviews', to: 'reviews#index', as: 'reviews'
