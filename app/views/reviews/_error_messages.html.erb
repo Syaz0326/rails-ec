@@ -1,0 +1,9 @@
+<% if flash[:review_error] != nil %>
+  <ul class="error_messages">
+    <% flash[:review_error].each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

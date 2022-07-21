@@ -31,7 +31,10 @@ class ReviewsController < ApplicationController
     end
 
     @review = Review.new(review[:review])
-    @review.save
+    if @review.save
+    else
+      flash[:review_error] = @review.errors.full_messages
+    end
     review[:tag].each do |tag_name, value|
       if value == '1'
         review_tag_id = review_tags.find_by(name: tag_name).id

@@ -20,6 +20,8 @@
 </ul>
 
 <%= form_with(model: @new_review, local: true ) do |f| %>
+  <%= render 'reviews/error_messages' %>
+
   <%= f.label :comment, 'コメント' %>
   <%= f.text_area :comment %>
 
