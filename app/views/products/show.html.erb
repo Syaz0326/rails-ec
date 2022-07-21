@@ -1,24 +1,31 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div class="container item-show">
+  <h1><%= @item.name %></h1>
+  <div class="h3 product_id">商品ID: <%= @item.id %></div>
 
-<h1>
-  <%= @item[:name] %>
-</h1>
-<% @item.each do |key, value| %>
-  <%= key %>: 
-  <%= value %>
-  <br>
-<% end %>
+  <%= image_tag(@item.image_path, size: '640x360', class:'product_image') %>
 
-<%= image_tag(@item[:image_path]) %>
 
-<h2>同じメーカーの商品</h2>
-<ul>
-  <% @other_products.each do |product| %>
-    <li>
-      <%= product.name %>
-    </li>
-  <% end %>
-</ul>
+  <div class="h2 price">価格: <%= @item.price %></div>
+  <div class="h3 category">カテゴリ: <%= @item.product_category.name %></div>
+  <div>
+    <%= @item.description %>
+  </div>
 
-<%= link_to 'レビューを見る', reviews_path %>
+  <h2><%= @item.maker.name %></h2>
+  <div>
+    <%= @item.maker.description %>
+  </div>
+  <h3><%= @item.maker.name %>の商品</h3>
+  <ul>
+    <% @other_products.each do |product| %>
+      <li>
+        <%= product.name %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h2>レビュー</h2>
+  <div>レビュー数: <%= @item.review.length %></div>
+  <div>評価: <%= total_score_formatted(@item.review) %></div>
+  <%= link_to 'レビューを見る', reviews_path %>
+</div>

@@ -7,3 +7,20 @@
   flex-direction: row;
   align-self: flex-end;
 }
+
+.item-show {
+  h1 {
+    padding-bottom: 0;
+  }
+  .product_id {
+    margin-top: 0;
+  }
+
+  .product_image {
+    object-fit: contain;
+  }
+
+  .category {
+    margin-top: 0;
+  }
+}
