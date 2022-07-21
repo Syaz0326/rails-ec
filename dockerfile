@@ -11,5 +11,3 @@ RUN gem install rails -v 6.1
 RUN gem install bundler
 RUN bundle install
 RUN rails webpacker:install
-RUN rails db:migrate
-RUN rails db:seed
