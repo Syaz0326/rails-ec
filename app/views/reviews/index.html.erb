@@ -1,64 +1,70 @@
-<h1>
-  <%= @product.name %>のレビュー
-</h1>
+<div class="container reviews">
+  <h1><%= @product.name %>のレビュー</h1>
 
-<ul>
-  <% @reviews.each do |review| %>
-    <li>
-      <%= review.comment %>,
-      <%= review.reviewer_name %>,
-      rate: <%= average_score_formatted(review) %>
-    </li>
-    <ul>
-      <% review.review_tags.each do |tag| %>
-        <li>
-          <%= tag.label %>
-        </li>
+  <ul class="list-group">
+    <% @reviews.each do |review| %>
+      <li class="list-group-item">
+        <div><%= review.comment %></div>
+        ユーザ名: <%= review.reviewer_name %>
+        <div>
+          タグ: 
+          <% review.review_tags.each do |tag| %>
+            <%= tag.label %>,
+          <% end %>
+        </div>
+        <div>
+          評価: <%= average_score_formatted(review) %> (
+          価格評価: <%= review.price_score %>,
+          デザイン評価: <%= review.design_score %>,
+          品質評価: <%= review.quality_score %>
+          )
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <h2>レビュー投稿</h2>
+  <%= form_with(model: @new_review, local: true ) do |f| %>
+    <%= render 'reviews/error_messages' %>
+
+    <%= f.label :comment, 'コメント', class: 'form-label' %>
+    <%= f.text_area :comment, class: 'form-control' %>
+
+    <%= f.label :reviewer_name, '名前', class: 'form-label' %>
+    <%= f.text_field :reviewer_name, class: 'form-control' %>
+
+    <%= f.label 'タグ' %>
+    <div>
+      <% @review_tags.each do |tag| %>
+        <%= f.check_box tag.name, class: 'form-check-input' %>
+        <%= f.label tag.name, tag.label %>
       <% end %>
-    </ul>
+    </div>
+
+    <%= f.label :price_score, '価格評価' %>
+    <div>
+      <% 5.times do |i| %>
+        <%= f.radio_button :price_score, i + 1 %>
+        <%= f.label "price_score_#{i + 1}", i + 1 %>
+      <% end %>
+    </div>
+
+    <%= f.label :design_score, 'デザイン評価' %>
+    <div>
+      <% 5.times do |i| %>
+        <%= f.radio_button :design_score, i + 1 %>
+        <%= f.label "design_score_#{i + 1}", i + 1 %>
+      <% end %>
+    </div>
+
+    <%= f.label :quality_score, '品質評価' %>
+    <div>
+      <% 5.times do |i| %>
+        <%= f.radio_button :quality_score, i + 1 %>
+        <%= f.label "quality_score_#{i + 1}", i + 1 %>
+      <% end %>
+    </div>
+
+    <%= f.submit 'Post Review' %>
   <% end %>
-</ul>
-
-<%= form_with(model: @new_review, local: true ) do |f| %>
-  <%= render 'reviews/error_messages' %>
-
-  <%= f.label :comment, 'コメント' %>
-  <%= f.text_area :comment %>
-
-  <%= f.label :reviewer_name, '名前' %>
-  <%= f.text_field :reviewer_name %>
-
-  <%= f.label 'タグ' %>
-  <div>
-    <% @review_tags.each do |tag| %>
-      <%= f.check_box tag.name %>
-      <%= f.label tag.name, tag.label %>
-    <% end %>
-  </div>
-
-  <%= f.label :price_score, '価格評価' %>
-  <div>
-    <% 5.times do |i| %>
-      <%= f.radio_button :price_score, i + 1 %>
-      <%= f.label :price_score, i + 1 %>
-    <% end %>
-  </div>
-
-  <%= f.label :design_score, 'デザイン評価' %>
-  <div>
-    <% 5.times do |i| %>
-      <%= f.radio_button :design_score, i + 1 %>
-      <%= f.label :design_score, i+1 %>
-    <% end %>
-  </div>
-
-  <%= f.label :quality_score, '品質評価' %>
-  <div>
-    <% 5.times do |i| %>
-      <%= f.radio_button :quality_score, i + 1 %>
-      <%= f.label :quality_score, i+1 %>
-    <% end %>
-  </div>
-
-  <%= f.submit 'Post Review' %>
-<% end %>
+</div>

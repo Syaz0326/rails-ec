@@ -2,13 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 800px;
-  gap: 8px;
-}
+.reviews {
+  ul {
+    li {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
 
-.error_messages {
-  color: red;
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    gap: 8px;
+  }
 }
