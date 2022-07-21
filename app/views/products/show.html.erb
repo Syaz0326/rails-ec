@@ -15,17 +15,14 @@
   <div>
     <%= @item.maker.description %>
   </div>
-  <h3><%= @item.maker.name %>の商品</h3>
-  <ul>
-    <% @other_products.each do |product| %>
-      <li>
-        <%= product.name %>
-      </li>
-    <% end %>
-  </ul>
 
   <h2>レビュー</h2>
   <div>レビュー数: <%= @item.review.length %></div>
   <div>評価: <%= total_score_formatted(@item.review) %></div>
   <%= link_to 'レビューを見る', reviews_path %>
+
+  <h3><%= @item.maker.name %>の商品</h3>
+  <div>
+    <%= render partial: 'products/product_list_item', collection: @other_products, as: 'item' %>
+  </div>
 </div>
