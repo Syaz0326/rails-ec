@@ -8,6 +8,9 @@ module ReviewsHelper
   end
 
   def total_score(reviews)
+    if reviews.length == 0
+      return 0
+    end
     sum = 0.0
     reviews.each do |review|
       sum += average_score(review)
@@ -16,9 +19,6 @@ module ReviewsHelper
   end
 
   def total_score_formatted(reviews)
-    if reviews.length == 0
-      return '0.0'
-    end
     sprintf("%.1f", total_score(reviews))
   end
 end
