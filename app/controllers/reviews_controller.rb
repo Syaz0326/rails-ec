@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     product_id = @product.id
     if product_id == nil
-      render 'index'
+      redirect_to reviews_path(@product)
     end
 
     review = {
