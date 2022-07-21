@@ -1,5 +1,13 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1>商品一覧</h1>
+
+<%= form_with(url: items_path, method: :get) do |f| %>
+  <%= f.label '並び替え' %>
+  <% if @sort_by.present? %>
+    <%= f.select :sort_by, @sort_items, { selected: @sort_by }, onChange: "javascript: this.form.submit();"  %>
+  <% else %>
+    <%= f.select :sort_by, @sort_items, {}, onChange: "javascript: this.form.submit();"  %>
+  <% end %>
+<% end %>
 
 <ul style="list-style: none">
   <% @items.each do |item| %>
