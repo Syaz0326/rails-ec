@@ -1,24 +1,22 @@
-# README
+# Ruby on Rails ECサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 環境構築
 
-Things you may want to cover:
+### Dockerイメージのビルド
 
-* Ruby version
+```shell
+docker-compose build
+```
 
-* System dependencies
+### Dockerコンテナの起動
 
-* Configuration
+```shell
+docker-compose up -d
+```
 
-* Database creation
+### DBのマイグレーションと初期データの投入
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```shell
+docker-compose exec web rails db:migrate
+docker-compose exec web rails db:seed
+```
