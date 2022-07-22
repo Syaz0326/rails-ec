@@ -20,3 +20,9 @@ docker-compose up -d
 docker-compose exec web rails db:migrate
 docker-compose exec web rails db:seed
 ```
+
+### Webpacker Install
+
+```shell
+docker-compose exec web rails Webpacker:install
+```
