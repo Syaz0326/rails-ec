@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @item = Product.find(params[:id])
+    @item = Product.find_by(id: params[:id])
 
     @other_products = Product
                       .where(maker_id: @item.maker_id)
@@ -37,16 +37,14 @@ class ProductsController < ApplicationController
 
   def sort_by_review_count(products)
     products.sort_by do |product|
-      product.review.size
+      -product.review.size
     end
-            .reverse
   end
 
   def sort_by_score(products)
     products.sort_by do |product|
-      total_score(product.review)
+      -total_score(product.review)
     end
-            .reverse
   end
 
   def sort_by_recent(products)
