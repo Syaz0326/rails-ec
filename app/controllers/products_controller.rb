@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  include ProductsHelper
+
   def index
     @sort_items = {
       レビュー数: 'review_count',
@@ -54,6 +56,4 @@ class ProductsController < ApplicationController
   def sort_params
     params.permit(:sort_by)
   end
-
-  include ProductsHelper
 end
