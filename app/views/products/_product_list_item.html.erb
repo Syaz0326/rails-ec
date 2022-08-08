@@ -6,8 +6,8 @@
     <li>商品id: <%= item.id %></li>
     <li>説明文: <%= item.description %></li>
     <li>メーカー: <%= item.maker.name %></li>
-    <li>レビュー数: <%= item.review.length %></li>
-    <li>評価: <%= total_score_formatted(item.review) %></li>
+    <li>レビュー数: <%= item.reviews.length %></li>
+    <li>評価: <%= total_score_formatted(item.reviews) %></li>
   </ul>
 <% end %>
 

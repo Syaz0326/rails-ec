@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   def index
     @product = Product.find(params[:id])
-    @reviews = @product.review
+    @reviews = @product.reviews
 
     @review_tags = ReviewTag.all
     @new_review = Review.new

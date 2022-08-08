@@ -18,8 +18,8 @@
   </div>
 
   <h2>レビュー</h2>
-  <div>レビュー数: <%= @item.review.length %></div>
-  <div>評価: <%= total_score_formatted(@item.review) %></div>
+  <div>レビュー数: <%= @item.reviews.length %></div>
+  <div>評価: <%= total_score_formatted(@item.reviews) %></div>
   <%= link_to 'レビューを見る', reviews_path %>
 
   <h3><%= @item.maker.name %>の商品</h3>

@@ -37,13 +37,13 @@ class ProductsController < ApplicationController
 
   def sort_by_review_count(products)
     products.sort_by do |product|
-      -product.review.size
+      -product.reviews.size
     end
   end
 
   def sort_by_score(products)
     products.sort_by do |product|
-      -total_score(product.review)
+      -total_score(product.reviews)
     end
   end
 
