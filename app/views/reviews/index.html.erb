@@ -9,9 +9,7 @@
         ユーザ名: <%= review.reviewer_name %>
         <div>
           タグ: 
-          <% review.review_tags.each do |tag| %>
-            <%= tag.label %>,
-          <% end %>
+          <%= review.review_tags.pluck(:label).join(',') %>
         </div>
         <div>
           評価: <%= average_score_formatted(review) %> (
