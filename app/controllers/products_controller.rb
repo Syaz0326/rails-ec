@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @item = Product.find_by(id: params[:id])
+    @item = Product.find(params[:id])
 
     @other_products = Product
                       .where(maker_id: @item.maker_id)
