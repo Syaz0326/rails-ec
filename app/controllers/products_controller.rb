@@ -25,30 +25,14 @@ class ProductsController < ApplicationController
   def sort_by(products, by)
     case by
     when 'review_count'
-      sort_by_review_count(products)
+      products.review_count
     when 'review_score'
-      sort_by_score(products)
+      products.review_score
     when 'recent'
-      sort_by_recent(products)
+      products.recent
     else
-      sort_by_review_count(products)
+      products.review_count
     end
-  end
-
-  def sort_by_review_count(products)
-    products.sort_by do |product|
-      -product.reviews.size
-    end
-  end
-
-  def sort_by_score(products)
-    products.sort_by do |product|
-      -total_score(product.reviews)
-    end
-  end
-
-  def sort_by_recent(products)
-    products.order(:created_at)
   end
 
   def sort_params
